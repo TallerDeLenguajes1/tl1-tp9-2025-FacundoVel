@@ -1,2 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using System.IO;
+
+Console.WriteLine("Ingrese el directorio a analizar: ");
+string path = Console.ReadLine();
+while(!Directory.Exists(path))
+{
+    Console.WriteLine("El directorio NO existe");
+    Console.WriteLine("Ingrese directorio valido: ");
+    path = Console.ReadLine();
+}
+
+string[] datos = Directory.GetDirectories(path);
+Console.WriteLine(datos);
