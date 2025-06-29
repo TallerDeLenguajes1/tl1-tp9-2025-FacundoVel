@@ -29,3 +29,21 @@ foreach(string archivo in archivos)
     double tamanioKB = info.Length / 1024.0;
     Console.WriteLine($"- {info.Name} | Tamaño: {tamanioKB:F2} KB");
 }
+
+string csvPath = Path.Combine(path, "reporte_archivos.csv");
+
+using (StreamWriter writer = new StreamWriter(csvPath))
+{
+    writer.WriteLine("Nombre del Arcivo, Tamaño (KB), Fecha de Ultima modificacion");
+
+    foreach(string archivo in archivos)
+    {
+        FileInfo info = new FileInfo(archivo);
+        string nombre = info.Name;
+        double tamanioKB = info.Length / 1024.0;
+        string fechaModificacion = info.LastWriteTime.ToString("dd/MM/yyyy HH:mm:ss");
+
+        writer.WriteLine($"{nombre}, {tamanioKB:F2}, {fechaModificacion}");
+    }
+}
+Console.WriteLine($"\n Se genero GSV en : {csvPath}");
