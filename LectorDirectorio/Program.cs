@@ -19,3 +19,13 @@ foreach(string carpeta in directorios)
     DirectoryInfo info = new DirectoryInfo(carpeta);
     Console.WriteLine($"- {info.Name}");
 }
+
+string[] archivos = Directory.GetFiles(path);
+Console.WriteLine("\nArchivos encontrados: ");
+
+foreach(string archivo in archivos)
+{
+    FileInfo info = new FileInfo(archivo);
+    double tamanioKB = info.Length / 1024.0;
+    Console.WriteLine($"- {info.Name} | Tamaño: {tamanioKB:F2} KB");
+}
