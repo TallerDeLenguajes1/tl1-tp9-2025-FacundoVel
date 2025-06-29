@@ -6,7 +6,7 @@ using LectorTagMP3;
 Console.WriteLine("Ingrese la ruta del archivo MP3: ");
 string? path = Console.ReadLine();
 
-while(string.IsNullOrWhiteSpace(path) || !File.Exists(path) || !path.EndWith(".mp"))
+while(string.IsNullOrWhiteSpace(path) || !File.Exists(path) || !path.EndsWith(".mp"))
 {
     Console.WriteLine("Ruta invalida o el archivo no es un MP3. Intente nuevamente:");
     path = Console.ReadLine();
@@ -17,7 +17,7 @@ FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
 if(fs.Length < 128)
 {
     Console.WriteLine("Archivo demasiado pequeño para contener etiqueta ID3v1.");
-    fs.close();
+    fs.Close();
     return;
 }
 
@@ -40,5 +40,5 @@ string artista = latin1.GetString(tagBytes, 33, 39).Trim('\0').Trim();
 string album = latin1.GetString(tagBytes, 63, 39).Trim('\0').Trim();
 string anio = latin1.GetString(tagBytes, 93, 4).Trim('\0').Trim();
 
-ID33v1Tag id3v1Tag = new ID33v1Tag(titulo, artista, album, anio);
+ID33v1Tag info = new ID33v1Tag(titulo, artista, album, anio);
 info.Mostrar();

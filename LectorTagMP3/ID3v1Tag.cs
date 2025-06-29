@@ -12,12 +12,12 @@ namespace LectorTagMP3
         public string Album{get => _album; set => _album = value;}
         public string Anio{get => _anio; set => _anio = value;}
         
-        public IDv1tag(string titulo, string artista, string album, string año)
+        public ID33v1Tag(string titulo, string artista, string album, string año)
         {
             _titulo = titulo;
             _artista = artista;
             _album = album;
-            _anio = anio;
+            _anio = año;
         }
 
         public void Mostrar()
