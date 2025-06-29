@@ -46,4 +46,4 @@ using (StreamWriter writer = new StreamWriter(csvPath))
         writer.WriteLine($"{nombre}, {tamanioKB:F2}, {fechaModificacion}");
     }
 }
-Console.WriteLine($"\n Se genero GSV en : {csvPath}");
+Console.WriteLine($"\n Se genero CSV en : {csvPath}");
